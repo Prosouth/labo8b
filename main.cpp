@@ -25,6 +25,7 @@ void supprimerElementsCentraux(int tab[], size_t& taille) {
       for(size_t i = parcours - 1; i <= taille; i++)
       {
          taille[i] = taille[i + 2];
+         // ceci est un commentaire
       }
    }
 }
