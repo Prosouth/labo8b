@@ -17,20 +17,32 @@ void afficher(const int tab[], size_t taille) {
 // -----------------------------------------------------------------------------
 // supprimerElementsCentraux
 
-void supprimerElementsCentraux(int tab[], size_t& taille) {
+void supprimerElementsCentraux(int tab[], size_t& taille) 
+{
    if(taille > 0 && taille % 2 == 0)
    {
       int parcours  = taille / 2;
       taille = taille - 2;
       for(size_t i = parcours - 1; i <= taille; i++)
       {
-         taille[i] = taille[i + 2];
-         // ceci est un commentaire
+         tab[i] = tab[i + 2];
       }
    }
+   else if(taille > 0 && taille % 2 == 1)
+   {
+      for(size_t i = taille / 2; i < taille; i++)
+      {
+         tab[i] = tab[i + 1];
+      }
+      taille --;
+   }
+   else if(taille == 1)
+   {
+      taille--;
+   }
 }
-
-void testSupprimerElementsCentraux(int tab[], size_t taille) {
+void testSupprimerElementsCentraux(int tab[], size_t taille) 
+{
     cout << "supprimerElementsCentraux()" << endl;
     cout << "avant: ";
     afficher(tab, taille);
@@ -60,8 +72,23 @@ void testToutSupprimerElementsCentraux() {
 // -----------------------------------------------------------------------------
 // estOrdonneStrictementCroissant
 
-bool estOrdonneStrictementCroissant(/* à compléter */) {
-    // à compléter
+bool estOrdonneStrictementCroissant(const int tab[], const size_t taille) 
+{
+   
+   if(taille != 0)
+   {
+      int min = tab[0];
+      for(int i = 1; i < taille; i++)
+      {
+         if(min < tab[i])
+         {
+            return false;
+         }
+      }
+   }
+   return true;
+   
+    
 }
 
 void testEstOrdonneStrictementCroissant(const int tab[], size_t taille) {
@@ -70,7 +97,8 @@ void testEstOrdonneStrictementCroissant(const int tab[], size_t taille) {
          << "ordonne de maniere strictement croissante" << endl;
 }
 
-void testToutEstOrdonneStrictementCroissant() {
+void testToutEstOrdonneStrictementCroissant() 
+{
     int t0[0]; // warning: ISO C++ forbids zero-size array 't0' [-pedantic]
     int t1[] = {1};
     int t2[] = {1, 2};
@@ -87,20 +115,23 @@ void testToutEstOrdonneStrictementCroissant() {
 // -----------------------------------------------------------------------------
 // supprimerValeur
 
-void supprimerValeur(/* à compléter */) {
+void supprimerValeur(/* à compléter */) 
+{
     // à compléter
 }
 
-void testSupprimerValeur(int tab[], size_t& taille, int valeurASupprimer) {
+void testSupprimerValeur(int tab[], size_t& taille, int valeurASupprimer) 
+{
     cout << "supprimerValeur(valeurASupprimer: " << valeurASupprimer << ")" << endl;
     cout << "avant: ";
     afficher(tab, taille);
-    supprimerValeur(tab, taille, valeurASupprimer);
+  //  supprimerValeur(tab, taille, valeurASupprimer);
     cout << "après: ";
     afficher(tab, taille);
 }
 
-void testToutSupprimerValeur() {
+void testToutSupprimerValeur() 
+{
     int t0[0];
     int t1[] = {1};
     int t2[] = {1, 2, 1, 1, 2, 1};
@@ -124,20 +155,23 @@ void testToutSupprimerValeur() {
 // -----------------------------------------------------------------------------
 // supprimerDoublons
 
-void supprimerDoublons(/* à compléter */) {
+void supprimerDoublons(/* à compléter */) 
+{
     // à compléter
 }
 
-void testSupprimerDoublons(int tab[], size_t taille) {
+void testSupprimerDoublons(int tab[], size_t taille) 
+{
     cout << "supprimerDoublons()" << endl;
     cout << "avant: ";
     afficher(tab, taille);
-    supprimerDoublons(tab, taille);
+  //  supprimerDoublons(tab, taille);
     cout << "après: ";
     afficher(tab, taille);
 }
 
-void testToutSupprimerDoublons() {
+void testToutSupprimerDoublons() 
+{
     int t0[0];
     int t1[] = {1};
     int t2[] = {1, 2};
@@ -162,10 +196,13 @@ void testToutSupprimerDoublons() {
 // -----------------------------------------------------------------------------
 // main
 
-int main() {
+int main() 
+{
     testToutSupprimerElementsCentraux();
     testToutEstOrdonneStrictementCroissant();
     testToutSupprimerValeur();
     testToutSupprimerDoublons();
+    
+    
     return EXIT_SUCCESS;
 }
