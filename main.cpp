@@ -4,7 +4,10 @@
 
 using namespace std;
 
-void afficher(const int tab[], size_t taille) {
+
+
+void afficher(const int tab[], size_t taille) 
+{
     cout << "[";
     for (size_t i = 0; i < taille; i++) {
         if (i > 0)
@@ -41,6 +44,7 @@ void supprimerElementsCentraux(int tab[], size_t& taille)
       taille--;
    }
 }
+
 void testSupprimerElementsCentraux(int tab[], size_t taille) 
 {
     cout << "supprimerElementsCentraux()" << endl;
@@ -115,9 +119,21 @@ void testToutEstOrdonneStrictementCroissant()
 // -----------------------------------------------------------------------------
 // supprimerValeur
 
-void supprimerValeur(/* à compléter */) 
+
+void supprimerValeur(int tab[], size_t& taille, int valeurASupprimer) 
 {
-    // à compléter
+   for(int i = 0; i < taille; i++)
+   {
+      if(tab[i] == valeurASupprimer)
+      {
+         for(int j = i; j < taille-1; j++)
+         {
+            tab[j] = tab[j+1];
+         }
+         taille--;
+         i--;
+      }
+   }
 }
 
 void testSupprimerValeur(int tab[], size_t& taille, int valeurASupprimer) 
@@ -125,7 +141,7 @@ void testSupprimerValeur(int tab[], size_t& taille, int valeurASupprimer)
     cout << "supprimerValeur(valeurASupprimer: " << valeurASupprimer << ")" << endl;
     cout << "avant: ";
     afficher(tab, taille);
-  //  supprimerValeur(tab, taille, valeurASupprimer);
+    supprimerValeur(tab, taille, valeurASupprimer);
     cout << "après: ";
     afficher(tab, taille);
 }
@@ -154,10 +170,34 @@ void testToutSupprimerValeur()
                                                                                           
 // -----------------------------------------------------------------------------
 // supprimerDoublons
-
-void supprimerDoublons(/* à compléter */) 
+void supprimerDoublons(int tab[], size_t taille) 
 {
-    // à compléter
+   int tailleTabDoublon = taille / 2 + 1;
+   bool doublon = true;
+   int  nombreDoublon = 0;
+   int tabDoublon[tailleTabDoublon];
+   for(int i = 0; i < taille; i++)
+   {
+      for(int j = 0; j < tailleTabDoublon; j++)
+      {
+         if(tab[i] == tabDoublon[j])
+         {
+            doublon = false;
+            for(int h = i; h < taille-1; h++)
+            {
+               tab[h] = tab[h+1];
+            }
+            taille--;
+            i--;
+         }
+      }
+      if(doublon)
+      {
+         tabDoublon[nombreDoublon] = tab[i];
+         doublon = true;
+         nombreDoublon ++;
+      }
+   }
 }
 
 void testSupprimerDoublons(int tab[], size_t taille) 
@@ -165,7 +205,7 @@ void testSupprimerDoublons(int tab[], size_t taille)
     cout << "supprimerDoublons()" << endl;
     cout << "avant: ";
     afficher(tab, taille);
-  //  supprimerDoublons(tab, taille);
+    supprimerDoublons(tab, taille);
     cout << "après: ";
     afficher(tab, taille);
 }
@@ -202,7 +242,6 @@ int main()
     testToutEstOrdonneStrictementCroissant();
     testToutSupprimerValeur();
     testToutSupprimerDoublons();
-    
-    
+
     return EXIT_SUCCESS;
 }
