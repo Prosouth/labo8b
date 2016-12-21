@@ -136,12 +136,12 @@ void testToutSupprimerValeur() {
 // -----------------------------------------------------------------------------
 // supprimerDoublons
 
-void supprimerDoublons(int tab[], size_t taille) 
+void supprimerDoublons(int tab[], size_t& taille) 
 {
    int tailleTabDoublon = taille / 2 + 1;
    bool doublon = true;
    int  nombreDoublon = 0;
-   int tabDoublon[tailleTabDoublon] = {};
+   int tabDoublon[tailleTabDoublon];
    for(int i = 0; i < taille; i++)
    {
       for(int j = 0; j < tailleTabDoublon; j++)
@@ -154,7 +154,7 @@ void supprimerDoublons(int tab[], size_t taille)
                tab[h] = tab[h+1];
             }
             taille--;
-            i--;
+          
          }
          
       }
