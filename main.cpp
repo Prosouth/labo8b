@@ -189,10 +189,8 @@ void supprimerDoublons(int tab[], size_t& taille)
                if(tab[h] == tab[h+1])
                {
                   i--;
-                  //taille--;
                }
                tab[h] = tab[h+1];
-   
             }
             taille--;
             
