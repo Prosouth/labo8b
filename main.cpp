@@ -81,12 +81,16 @@ bool estOrdonneStrictementCroissant(const int tab[], const size_t taille)
    
    if(taille != 0)
    {
-      int min = tab[0];
+      int max = tab[0];
       for(int i = 1; i < taille; i++)
       {
-         if(min < tab[i])
+         if(max >= tab[i])
          {
             return false;
+         }
+         else
+         {
+            max = tab[i];
          }
       }
    }
@@ -108,12 +112,15 @@ void testToutEstOrdonneStrictementCroissant()
     int t2[] = {1, 2};
     int t3[] = {1, 2, 3};
     int t4[] = {1, 2, 2};
+    int t5[] = {1, 2, 1};
     
     testEstOrdonneStrictementCroissant(t0, 0);
     testEstOrdonneStrictementCroissant(t1, 1);
     testEstOrdonneStrictementCroissant(t2, 2);
     testEstOrdonneStrictementCroissant(t3, 3);
     testEstOrdonneStrictementCroissant(t4, 3);
+    //testEstOrdonneStrictementCroissant(t5, 3);
+
 }
 
 // -----------------------------------------------------------------------------
